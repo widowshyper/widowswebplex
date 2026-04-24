@@ -11,7 +11,6 @@
 
     :root {
       --gold: #e5a00d;
-      --gold-dim: #a97300;
       --bg: #0f0f0f;
       --bg2: #161616;
       --bg3: #1e1e1e;
@@ -32,7 +31,6 @@
       min-height: 100vh;
     }
 
-    /* --- NOISE OVERLAY --- */
     body::before {
       content: '';
       position: fixed;
@@ -43,7 +41,6 @@
       opacity: 0.4;
     }
 
-    /* --- HERO GLOW --- */
     .hero-glow {
       position: absolute;
       top: -120px;
@@ -55,7 +52,7 @@
       pointer-events: none;
     }
 
-    /* --- NAV --- */
+    /* NAV */
     nav {
       position: sticky;
       top: 0;
@@ -70,17 +67,8 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .plex-icon {
-      width: 28px;
-      height: 28px;
-    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .plex-icon { width: 28px; height: 28px; }
 
     .nav-brand {
       font-family: 'Bebas Neue', sans-serif;
@@ -89,11 +77,7 @@
       color: var(--gold);
     }
 
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
 
     .nav-links a {
       color: var(--muted);
@@ -106,7 +90,7 @@
 
     .nav-links a:hover { color: var(--text); }
 
-    /* --- HERO --- */
+    /* HERO */
     .hero {
       position: relative;
       overflow: hidden;
@@ -156,7 +140,7 @@
       animation: fadeUp 0.6s 0.45s forwards;
     }
 
-    /* --- MAIN LAYOUT --- */
+    /* MAIN */
     main {
       max-width: 900px;
       margin: 0 auto;
@@ -165,7 +149,6 @@
       z-index: 1;
     }
 
-    /* --- SECTION HEADERS --- */
     .section-label {
       font-size: 10px;
       letter-spacing: 4px;
@@ -184,7 +167,15 @@
 
     section { margin-bottom: 80px; }
 
-    /* --- ANNOUNCEMENT CARDS --- */
+    /* ================================================================
+       ANNOUNCEMENTS
+       To add a new announcement, copy one .announcement-card block and
+       paste it at the TOP of the .announcements div (newest first).
+       Badge variants:
+         <span class="ann-badge">          — gold  (New Content, Maintenance)
+         <span class="ann-badge warning">  — red   (Downtime, Warning)
+         <span class="ann-badge info">     — blue  (Info, Update)
+    ================================================================ */
     .announcements { display: flex; flex-direction: column; gap: 16px; }
 
     .announcement-card {
@@ -198,21 +189,15 @@
       animation: fadeUp 0.5s forwards;
     }
 
-    .announcement-card:hover {
-      background: var(--bg3);
-      border-left-color: #f5b82e;
-    }
+    .announcement-card:hover { background: var(--bg3); border-left-color: #f5b82e; }
 
     .announcement-card:nth-child(1) { animation-delay: 0.05s; }
     .announcement-card:nth-child(2) { animation-delay: 0.15s; }
     .announcement-card:nth-child(3) { animation-delay: 0.25s; }
+    .announcement-card:nth-child(4) { animation-delay: 0.35s; }
+    .announcement-card:nth-child(5) { animation-delay: 0.45s; }
 
-    .ann-meta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 8px;
-    }
+    .ann-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
 
     .ann-badge {
       font-size: 10px;
@@ -225,25 +210,100 @@
       border: 1px solid rgba(229,160,13,0.3);
     }
 
-    .ann-date {
-      font-size: 12px;
-      color: var(--muted);
+    .ann-badge.warning {
+      background: rgba(220,60,60,0.15);
+      color: #e05555;
+      border-color: rgba(220,60,60,0.3);
     }
 
-    .ann-title {
-      font-size: 17px;
+    .ann-badge.info {
+      background: rgba(60,140,220,0.15);
+      color: #5ba3e0;
+      border-color: rgba(60,140,220,0.3);
+    }
+
+    .ann-date { font-size: 12px; color: var(--muted); }
+    .ann-title { font-size: 17px; font-weight: 500; color: #fff; margin-bottom: 6px; }
+    .ann-body { font-size: 14px; color: var(--muted); line-height: 1.65; }
+    .ann-body a { color: var(--gold); text-decoration: none; }
+    .ann-body a:hover { text-decoration: underline; }
+
+    /* STATUS CARDS */
+    .status-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .status-grid { grid-template-columns: 1fr; }
+    }
+
+    .status-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--card-radius);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .status-card:hover { background: var(--bg3); border-color: rgba(229,160,13,0.2); }
+
+    .status-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #3ecf63;
+      flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .status-card-title {
+      font-size: 15px;
       font-weight: 500;
       color: #fff;
-      margin-bottom: 6px;
     }
 
-    .ann-body {
-      font-size: 14px;
+    .status-card-desc {
+      font-size: 13px;
       color: var(--muted);
-      line-height: 1.65;
+      line-height: 1.6;
+      flex: 1;
     }
 
-    /* --- DONATE --- */
+    .status-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(229,160,13,0.1);
+      border: 1px solid rgba(229,160,13,0.25);
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 9px 16px;
+      border-radius: 6px;
+      transition: background 0.2s, border-color 0.2s;
+      align-self: flex-start;
+    }
+
+    .status-link:hover {
+      background: rgba(229,160,13,0.18);
+      border-color: rgba(229,160,13,0.45);
+    }
+
+    .status-link svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+    /* DONATE */
     .donate-card {
       background: var(--bg2);
       border: 1px solid var(--border);
@@ -281,14 +341,10 @@
       white-space: nowrap;
     }
 
-    .donate-btn:hover {
-      background: #f5b82e;
-      transform: translateY(-1px);
-    }
-
+    .donate-btn:hover { background: #f5b82e; transform: translateY(-1px); }
     .donate-btn svg { width: 18px; height: 18px; }
 
-    /* --- CONTACT --- */
+    /* CONTACT */
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -301,12 +357,11 @@
       border-radius: var(--card-radius);
       padding: 24px;
       transition: border-color 0.2s, background 0.2s;
+      text-decoration: none;
+      display: block;
     }
 
-    .contact-card:hover {
-      border-color: rgba(229,160,13,0.3);
-      background: var(--bg3);
-    }
+    .contact-card:hover { border-color: rgba(229,160,13,0.3); background: var(--bg3); }
 
     .contact-icon {
       width: 36px;
@@ -320,29 +375,10 @@
     }
 
     .contact-icon svg { width: 18px; height: 18px; color: var(--gold); }
+    .contact-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .contact-value { font-size: 14px; color: var(--text); }
 
-    .contact-label {
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .contact-value {
-      font-size: 14px;
-      color: var(--text);
-    }
-
-    .contact-value a {
-      color: var(--text);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .contact-value a:hover { color: var(--gold); }
-
-    /* --- FOOTER --- */
+    /* FOOTER */
     footer {
       border-top: 1px solid var(--border);
       text-align: center;
@@ -356,13 +392,16 @@
 
     footer span { color: var(--gold); }
 
-    /* --- ANIMATIONS --- */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* --- RESPONSIVE --- */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
     @media (max-width: 600px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
@@ -372,7 +411,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a class="nav-logo" href="#">
       <svg class="plex-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -381,14 +419,9 @@
       </svg>
       <span class="nav-brand">WidowsWeb Plex</span>
     </a>
-    <ul class="nav-links">
-      <li><a href="#announcements">Announcements</a></li>
-      <li><a href="#donate">Donate</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+
   </nav>
 
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-glow"></div>
     <p class="hero-eyebrow">Private Media Server</p>
@@ -397,14 +430,34 @@
     <div class="hero-divider"></div>
   </div>
 
-  <!-- MAIN CONTENT -->
   <main>
 
-    <!-- ANNOUNCEMENTS -->
+    <!-- ================================================================
+         ANNOUNCEMENTS — HOW TO ADD A NEW ONE:
+         1. Copy the block below between the dashes and paste it
+            directly after the "PASTE NEW ANNOUNCEMENTS BELOW" comment.
+         2. Update badge type, date, title, and body text.
+         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        <div class="announcement-card">
+          <div class="ann-meta">
+            <span class="ann-badge">New Content</span>
+            <span class="ann-date">DD Month YYYY</span>
+          </div>
+          <div class="ann-title">Your title here</div>
+          <div class="ann-body">Your message here.</div>
+        </div>
+         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+         Badge options:
+           <span class="ann-badge">           gold  — general / new content
+           <span class="ann-badge warning">   red   — downtime / warning
+           <span class="ann-badge info">      blue  — info / update
+    ================================================================ -->
     <section id="announcements">
       <p class="section-label">Latest updates</p>
       <h2 class="section-title">Announcements</h2>
       <div class="announcements">
+
+        <!-- PASTE NEW ANNOUNCEMENTS BELOW THIS LINE -->
 
         <div class="announcement-card">
           <div class="ann-meta">
@@ -426,11 +479,48 @@
 
         <div class="announcement-card">
           <div class="ann-meta">
-            <span class="ann-badge">Info</span>
+            <span class="ann-badge info">Info</span>
             <span class="ann-date">15 April 2025</span>
           </div>
           <div class="ann-title">How to request content</div>
-          <div class="ann-body">Want something added to the library? Use the contact details below to send through your requests and I'll add them when I can.</div>
+          <div class="ann-body">Want something added to the library? Submit your requests through Seerr and I'll get them added as soon as I can.<br><br><a href="https://plex.jaymediarequest.com/" target="_blank" rel="noopener">→ Click here to request media on Seerr</a></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STATUS -->
+    <section id="status">
+      <p class="section-label">Live status</p>
+      <h2 class="section-title">Server Status</h2>
+      <div class="status-grid">
+
+        <div class="status-card">
+          <div class="status-card-header">
+            <span class="status-dot"></span>
+            <span class="status-card-title">Official Plex Status</span>
+          </div>
+          <p class="status-card-desc">Check this page if you're having trouble logging into Plex or authenticating your account. This covers Plex's own login servers, account services, and app infrastructure — not the media itself.</p>
+          <a class="status-link" href="https://status.plex.tv/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Click here to check Plex status
+          </a>
+        </div>
+
+        <div class="status-card">
+          <div class="status-card-header">
+            <span class="status-dot"></span>
+            <span class="status-card-title">WidowsWeb Server Status</span>
+          </div>
+          <p class="status-card-desc">Check this page if media isn't loading, streams are failing, or the server seems unreachable. This monitors the actual machine the content is hosted on — uptime, response time, and availability.</p>
+          <a class="status-link" href="https://stats.uptimerobot.com/AT558PWd5l/801566006" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Click here to check server status
+          </a>
         </div>
 
       </div>
@@ -442,10 +532,9 @@
       <h2 class="section-title">Support the Server</h2>
       <div class="donate-card">
         <div class="donate-text">
-          <p>Running a Plex server isn't free — hardware, electricity, storage, and internet all cost money. If you enjoy the content and want to help keep things going, even a small contribution means a lot.</p>
+          <p>Running a Plex server has real costs — hardware, electricity, storage, and internet all add up. If you enjoy the server and want to chip in, any contribution is genuinely appreciated. <strong style="color: var(--text);">Donating is entirely optional and will never affect your access.</strong></p>
         </div>
-        <!-- Replace YOUR_PAYPAL_LINK with your actual PayPal.me URL -->
-        <a class="donate-btn" href="https://paypal.me/YOUR_PAYPAL_LINK" target="_blank" rel="noopener">
+        <a class="donate-btn" href="https://paypal.me/aidanboers" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path d="M7.144 19.532l1.049-5.751c.11-.606.691-1.031 1.304-.931l.162.03c2.607.467 5.372-.257 6.938-2.248 1.494-1.9 1.64-4.52.422-6.399C15.86 2.599 13.55 2 11.108 2H5.265c-.736 0-1.364.528-1.474 1.255L1.3 17.71a.75.75 0 00.74.868h3.43l1.674-9.149v.002zm9.823-9.81c.05.344.065.696.04 1.052-.426 5.206-4.788 6.535-9.422 6.257l-.81 4.432h2.405l.498-2.73c.11-.607.693-1.032 1.305-.932l.163.03c2.606.467 5.371-.257 6.937-2.248.88-1.12 1.298-2.572 1.11-4.068a4.656 4.656 0 00-.226-.793z"/>
           </svg>
@@ -460,16 +549,15 @@
       <h2 class="section-title">Contact</h2>
       <div class="contact-grid">
 
-        <div class="contact-card">
+        <a class="contact-card" href="https://www.reddit.com/user/widowshypers" target="_blank" rel="noopener">
           <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
-              <path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
             </svg>
           </div>
-          <div class="contact-label">Email</div>
-          <!-- Replace with your actual email -->
-          <div class="contact-value"><a href="mailto:you@example.com">you@example.com</a></div>
-        </div>
+          <div class="contact-label">Reddit</div>
+          <div class="contact-value">u/widowshypers</div>
+        </a>
 
         <div class="contact-card">
           <div class="contact-icon">
@@ -478,18 +566,7 @@
             </svg>
           </div>
           <div class="contact-label">Discord</div>
-          <!-- Replace with your Discord username or invite link -->
-          <div class="contact-value">YourDiscord#0000</div>
-        </div>
-
-        <div class="contact-card">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="contact-label">Requests</div>
-          <div class="contact-value">Message me directly</div>
+          <div class="contact-value">widowshyper</div>
         </div>
 
       </div>
@@ -497,7 +574,6 @@
 
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <span>WidowsWeb Plex</span> &nbsp;·&nbsp; jaymediarequest.com &nbsp;·&nbsp; For approved users only
   </footer>
