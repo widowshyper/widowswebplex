@@ -167,15 +167,6 @@
 
     section { margin-bottom: 80px; }
 
-    /* ================================================================
-       ANNOUNCEMENTS
-       To add a new announcement, copy one .announcement-card block and
-       paste it at the TOP of the .announcements div (newest first).
-       Badge variants:
-         <span class="ann-badge">          — gold  (New Content, Maintenance)
-         <span class="ann-badge warning">  — red   (Downtime, Warning)
-         <span class="ann-badge info">     — blue  (Info, Update)
-    ================================================================ */
     .announcements { display: flex; flex-direction: column; gap: 16px; }
 
     .announcement-card {
@@ -419,7 +410,6 @@
       </svg>
       <span class="nav-brand">WidowsWeb Plex</span>
     </a>
-
   </nav>
 
   <div class="hero">
@@ -432,33 +422,31 @@
 
   <main>
 
-    <!-- ================================================================
-         ANNOUNCEMENTS — HOW TO ADD A NEW ONE:
-         1. Copy the block below between the dashes and paste it
-            directly after the "PASTE NEW ANNOUNCEMENTS BELOW" comment.
-         2. Update badge type, date, title, and body text.
-         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        <div class="announcement-card">
-          <div class="ann-meta">
-            <span class="ann-badge">New Content</span>
-            <span class="ann-date">DD Month YYYY</span>
-          </div>
-          <div class="ann-title">Your title here</div>
-          <div class="ann-body">Your message here.</div>
+    <!-- DONATE -->
+    <section id="donate">
+      <p class="section-label">Keep the lights on</p>
+      <h2 class="section-title">Support the Server</h2>
+      <div class="donate-card">
+        <div class="donate-text">
+          <p>Running a Plex server has real costs — hardware, electricity, storage, and internet all add up. If you enjoy the server and want to chip in, any contribution (however small) is genuinely appreciated. <strong style="color: var(--text);">Donating is entirely optional and will never affect your access.</strong></p>
         </div>
-         - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-         Badge options:
-           <span class="ann-badge">           gold  — general / new content
-           <span class="ann-badge warning">   red   — downtime / warning
-           <span class="ann-badge info">      blue  — info / update
-    ================================================================ -->
+        <a class="donate-btn" href="https://paypal.me/widowshypers" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.144 19.532l1.049-5.751c.11-.606.691-1.031 1.304-.931l.162.03c2.607.467 5.372-.257 6.938-2.248 1.494-1.9 1.64-4.52.422-6.399C15.86 2.599 13.55 2 11.108 2H5.265c-.736 0-1.364.528-1.474 1.255L1.3 17.71a.75.75 0 00.74.868h3.43l1.674-9.149v.002zm9.823-9.81c.05.344.065.696.04 1.052-.426 5.206-4.788 6.535-9.422 6.257l-.81 4.432h2.405l.498-2.73c.11-.607.693-1.032 1.305-.932l.163.03c2.606.467 5.371-.257 6.937-2.248.88-1.12 1.298-2.572 1.11-4.068a4.656 4.656 0 00-.226-.793z"/>
+          </svg>
+          Donate via PayPal
+        </a>
+      </div>
+    </section>
+
+    <!-- ANNOUNCEMENTS -->
     <section id="announcements">
       <p class="section-label">Latest updates</p>
       <h2 class="section-title">Announcements</h2>
       <div class="announcements">
 
         <!-- PASTE NEW ANNOUNCEMENTS BELOW THIS LINE -->
-                <div class="announcement-card">
+        <div class="announcement-card">
           <div class="ann-meta">
             <span class="ann-badge">Backups</span>
             <span class="ann-date">May 2nd 2026</span>
@@ -466,7 +454,7 @@
           <div class="ann-title">Plex Backups</div>
           <div class="ann-body">Hello All! Just so you are aware, Plex backs up every Sunday morning at 7am AEST. So if you are watching and your access suddenly disappears this is why. Come back in a few minuites and keep watching!</div>
         </div>
-        
+
         <div class="announcement-card">
           <div class="ann-meta">
             <span class="ann-badge">Outage</span>
@@ -531,23 +519,6 @@
           </a>
         </div>
 
-      </div>
-    </section>
-
-    <!-- DONATE -->
-    <section id="donate">
-      <p class="section-label">Keep the lights on</p>
-      <h2 class="section-title">Support the Server</h2>
-      <div class="donate-card">
-        <div class="donate-text">
-          <p>Running a Plex server has real costs — hardware, electricity, storage, and internet all add up. If you enjoy the server and want to chip in, any contribution is genuinely appreciated. <strong style="color: var(--text);">Donating is entirely optional and will never affect your access.</strong></p>
-        </div>
-        <a class="donate-btn" href="https://paypal.me/widowshypers" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7.144 19.532l1.049-5.751c.11-.606.691-1.031 1.304-.931l.162.03c2.607.467 5.372-.257 6.938-2.248 1.494-1.9 1.64-4.52.422-6.399C15.86 2.599 13.55 2 11.108 2H5.265c-.736 0-1.364.528-1.474 1.255L1.3 17.71a.75.75 0 00.74.868h3.43l1.674-9.149v.002zm9.823-9.81c.05.344.065.696.04 1.052-.426 5.206-4.788 6.535-9.422 6.257l-.81 4.432h2.405l.498-2.73c.11-.607.693-1.032 1.305-.932l.163.03c2.606.467 5.371-.257 6.937-2.248.88-1.12 1.298-2.572 1.11-4.068a4.656 4.656 0 00-.226-.793z"/>
-          </svg>
-          Donate via PayPal
-        </a>
       </div>
     </section>
 
